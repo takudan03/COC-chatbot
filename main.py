@@ -31,11 +31,13 @@ INFO_CHANNEL_ID=int(auth[2])
 async def hello(ctx):
     await ctx.send("Hello! I am up and running!")
 
-async def help(ctx):
-    to_send="Hello! I accept the following commands:\n"
+@bot.command()
+async def all_commands(ctx):
+    to_send="I accept the following commands:\n"
     to_send+="!hello : To check bot status\n"
     to_send+="!player_info <Player Tag>: Displays account info for the player with the provided player tag\n"
     to_send+="!clan_members <Clan Tag>: Displays list of members in the clan with the provided clan tag\n"
+    to_send+="!my_clan_members : Displays list of members in the clan with the clan tag in the credential file\n"
     to_send+="!home_troops <Player Tag>: Displays Home Base troops and levels for the player with provided player tag\n"
     to_send+="!builder_troops <Player Tag>: Displays Builder Base troops and levels for the player with provided player tag\n"
     to_send+="!heroes <Player Tag>: Displays Hero info for player with provided tag\n"
@@ -91,6 +93,8 @@ async def my_clan_info(ctx):
         to_send+= "Required Trophies: 🏆{}\n".format(clan.required_trophies)
         to_send+= "War Wins: {}\n".format(clan.war_wins)
 
+    await ctx.send(to_send)
+
 @bot.command()
 async def clan_info(ctx, tag):
     clan=await coc_client.get_clan(tag)
@@ -100,6 +104,7 @@ async def clan_info(ctx, tag):
     to_send+= "Location: {}\n".format(clan.location)
     to_send+= "Required Trophies: 🏆{}\n".format(clan.required_trophies)
     to_send+= "War Wins: {}\n".format(clan.war_wins)
+
 
 
 bot.run(auth[3])
