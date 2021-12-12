@@ -11,7 +11,7 @@ line3: DC Oauth2 token
 line4: COC clan tag
 '''
 
-with open("coc_bot_food.txt.txt") as f:
+with open("coc_bot_food.txt") as f:
     auth = f.readlines()
 
 auth = [x.strip() for x in auth]
