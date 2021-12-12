@@ -1,0 +1,5 @@
+COC dev username
+COC dev password
+Discord Info channel ID
+Discord Oauth2 token
+COC clan tag
